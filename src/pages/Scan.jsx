@@ -3,6 +3,7 @@ import { useSearchParams, useNavigate } from 'react-router-dom'
 import { Wifi, CheckCircle, LogOut, ChevronLeft } from 'lucide-react'
 import { Badge, SectionTitle, SimBadge } from '../components/ui'
 import { RFID_DETAIL } from '../data/mockData'
+import { useOfflineQueue } from '../hooks/useOfflineQueue'
 import clsx from 'clsx'
 
 const STATUS_LABEL = { active: 'Active', transit: 'In Transit', idle: 'Idle', missing: 'Missing' }
@@ -16,6 +17,7 @@ const QUICK = [
 export default function Scan() {
   const navigate = useNavigate()
   const [params] = useSearchParams()
+  const { isOnline, addToQueue, syncQueue } = useOfflineQueue()
   const [input, setInput]       = useState(params.get('id') || 'RFID-DG-0042')
   const [result, setResult]     = useState(null)
   const [scanning, setScanning] = useState(false)
@@ -26,6 +28,13 @@ export default function Scan() {
     if (id) { setInput(id); doScan(id) }
     else doScan('RFID-DG-0042')
   }, [])
+
+  // Sync queue when coming back online
+  useEffect(() => {
+    if (isOnline) {
+      syncQueue()
+    }
+  }, [isOnline])
 
   const doScan = (id) => {
     const target = id || input
@@ -134,10 +143,30 @@ export default function Scan() {
               ))}
               {/* ACTION BUTTONS */}
               <div className="flex gap-2 mt-3 pt-1">
-                <button className="btn-primary flex-1 flex items-center justify-center gap-1.5 text-xs py-2" onClick={() => showToast('✓ Check-in recorded successfully')}>
+                <button
+                  className="btn-primary flex-1 flex items-center justify-center gap-1.5 text-xs py-2"
+                  onClick={() => {
+                    if (isOnline) {
+                      showToast('✓ Check-in recorded successfully')
+                    } else {
+                      addToQueue({ assetId: input, action: 'checkin' })
+                      showToast('⚠ Offline — scan queued, will sync when reconnected')
+                    }
+                  }}
+                >
                   <CheckCircle size={14} /> Check In
                 </button>
-                <button className="btn-outline flex-1 flex items-center justify-center gap-1.5 text-xs py-2" onClick={() => showToast('Asset marked as dispatched')}>
+                <button
+                  className="btn-outline flex-1 flex items-center justify-center gap-1.5 text-xs py-2"
+                  onClick={() => {
+                    if (isOnline) {
+                      showToast('Asset marked as dispatched')
+                    } else {
+                      addToQueue({ assetId: input, action: 'checkout' })
+                      showToast('⚠ Offline — scan queued, will sync when reconnected')
+                    }
+                  }}
+                >
                   <LogOut size={14} /> Check Out
                 </button>
               </div>

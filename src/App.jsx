@@ -2,6 +2,7 @@ import { Routes, Route, Navigate } from 'react-router-dom'
 import { useAuth } from './hooks/useAuth'
 import TopNav from './components/TopNav'
 import BottomNav from './components/BottomNav'
+import OfflineBanner from './components/OfflineBanner'
 import Login        from './pages/Login'
 import Dashboard    from './pages/Dashboard'
 import Assets       from './pages/Assets'
@@ -46,6 +47,9 @@ export default function App() {
           <Route path="*"           element={<Navigate to="/" replace />} />
         </Routes>
       </main>
+
+      {/* Offline banner — fixed at bottom above nav */}
+      <OfflineBanner />
 
       {/* Mobile bottom nav — hidden on desktop */}
       <div className="md:hidden">
