@@ -1,11 +1,12 @@
 import { Routes, Route, Navigate } from 'react-router-dom'
 import TopNav from './components/TopNav'
 import BottomNav from './components/BottomNav'
-import Dashboard  from './pages/Dashboard'
-import Assets     from './pages/Assets'
-import Scan       from './pages/Scan'
-import Alerts     from './pages/Alerts'
-import MobileView from './pages/MobileView'
+import Dashboard    from './pages/Dashboard'
+import Assets       from './pages/Assets'
+import AssetDetail  from './pages/AssetDetail'
+import Scan         from './pages/Scan'
+import Alerts       from './pages/Alerts'
+import MobileView   from './pages/MobileView'
 
 export default function App() {
   return (
@@ -18,12 +19,13 @@ export default function App() {
       {/* Scrollable content */}
       <main className="flex-1 overflow-y-auto">
         <Routes>
-          <Route path="/"       element={<Dashboard  />} />
-          <Route path="/assets" element={<Assets     />} />
-          <Route path="/scan"   element={<Scan       />} />
-          <Route path="/alerts" element={<Alerts     />} />
-          <Route path="/mobile" element={<MobileView />} />
-          <Route path="*"       element={<Navigate to="/" replace />} />
+          <Route path="/"           element={<Dashboard    />} />
+          <Route path="/assets"     element={<Assets       />} />
+          <Route path="/assets/:id" element={<AssetDetail  />} />
+          <Route path="/scan"       element={<Scan         />} />
+          <Route path="/alerts"     element={<Alerts       />} />
+          <Route path="/mobile"     element={<MobileView   />} />
+          <Route path="*"           element={<Navigate to="/" replace />} />
         </Routes>
       </main>
 

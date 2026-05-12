@@ -25,7 +25,7 @@ export default function Assets() {
     return matchQ && matchT && matchC && matchS
   })
 
-  const handleRow = (id) => nav(`/scan?id=${id}`)
+  const handleRow = (id) => nav(`/assets/${id}`)
 
   return (
     <div className="p-4 fade-in">
