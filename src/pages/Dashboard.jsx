@@ -1,8 +1,6 @@
 import { useEffect, useState, Suspense, lazy } from 'react'
-import { Bell, X } from 'lucide-react'
 import { StatCard, Card, SectionTitle } from '../components/ui'
 import { CITIES, STATS, UTIL, VENDORS, ACTIVITY } from '../data/mockData'
-import { useNotifications } from '../hooks/useNotifications'
 
 const MapView = lazy(() => import('../components/MapView'))
 
@@ -16,10 +14,6 @@ const LIVE_TICKS = [
 export default function Dashboard() {
   const [feed, setFeed] = useState(ACTIVITY)
   const [tick, setTick] = useState(0)
-  const { permission, requestPermission } = useNotifications()
-  const [dismissBanner, setDismissBanner] = useState(() => {
-    return sessionStorage.getItem('dismiss_notification_banner') === 'true'
-  })
 
   useEffect(() => {
     const t = setInterval(() => {
@@ -29,37 +23,8 @@ export default function Dashboard() {
     return () => clearInterval(t)
   }, [tick])
 
-  const handleDismissBanner = () => {
-    setDismissBanner(true)
-    sessionStorage.setItem('dismiss_notification_banner', 'true')
-  }
-
   return (
     <div className="p-4 space-y-4 fade-in">
-      {permission !== 'granted' && !dismissBanner && (
-        <div className="bg-white border-l-4 border-amber-500 rounded-lg p-4 flex items-start gap-3 shadow-sm slide-up">
-          <Bell size={18} className="text-amber-600 flex-shrink-0 mt-0.5" />
-          <div className="flex-1">
-            <p className="text-sm font-medium text-emb-textprimary">Enable notifications</p>
-            <p className="text-xs text-emb-textsecondary mt-0.5">Get alerts for missing assets and overdue returns</p>
-          </div>
-          <div className="flex items-center gap-2">
-            <button
-              onClick={requestPermission}
-              className="text-xs font-semibold text-amber-600 hover:text-amber-700 transition-colors"
-            >
-              Enable
-            </button>
-            <button
-              onClick={handleDismissBanner}
-              className="text-emb-textsecondary hover:text-emb-textprimary transition-colors p-1"
-            >
-              <X size={16} />
-            </button>
-          </div>
-        </div>
-      )}
-
       <SectionTitle>Overview — Asset Tracking Dashboard</SectionTitle>
 
       {/* STAT CARDS */}
