@@ -1,7 +1,8 @@
 import { useNavigate } from 'react-router-dom'
-import { AlertTriangle, Clock, CalendarX } from 'lucide-react'
+import { AlertTriangle, Clock, CalendarX, Bell } from 'lucide-react'
 import { SectionTitle } from '../components/ui'
 import { ALERTS } from '../data/mockData'
+import { useNotifications } from '../hooks/useNotifications'
 
 const CONFIG = {
   missing: { icon: AlertTriangle, color: '#ef4444', bg: 'bg-red-500/8',   border: 'border-l-red-500'   },
@@ -11,6 +12,7 @@ const CONFIG = {
 
 export default function Alerts() {
   const nav = useNavigate()
+  const { simulateAlert } = useNotifications()
 
   const counts = {
     missing: ALERTS.filter(a => a.type === 'missing').length,
@@ -20,7 +22,16 @@ export default function Alerts() {
 
   return (
     <div className="p-4 fade-in">
-      <SectionTitle>Active Alerts — {ALERTS.length} Total</SectionTitle>
+      <div className="flex items-center justify-between mb-6">
+        <SectionTitle>Active Alerts — {ALERTS.length} Total</SectionTitle>
+        <button
+          onClick={() => simulateAlert('Rum Brand Standee', 'Hyderabad')}
+          className="flex items-center gap-1.5 px-3 py-2 border border-emb-green text-emb-green font-semibold rounded-lg text-xs hover:bg-emb-light active:scale-95 transition-all"
+        >
+          <Bell size={14} />
+          Test Notification
+        </button>
+      </div>
 
       {/* SUMMARY PILLS */}
       <div className="flex gap-2 mb-4 flex-wrap">
