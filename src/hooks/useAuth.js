@@ -29,7 +29,7 @@ export function useAuth() {
       const userData = { email: found.email, role: found.role, name: found.name }
       setUser(userData)
       localStorage.setItem('auth_user', JSON.stringify(userData))
-      return { success: true }
+      return { success: true, user: userData }
     }
     return { success: false, error: 'Invalid credentials' }
   }

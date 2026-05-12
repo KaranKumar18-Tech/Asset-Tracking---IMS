@@ -30,9 +30,7 @@ export default function Login() {
     setLoading(false)
 
     if (result.success) {
-      // Get the user data to determine role
-      const user = JSON.parse(localStorage.getItem('auth_user'))
-      if (user.role === 'vendor') {
+      if (result.user.role === 'vendor') {
         nav('/mobile')
       } else {
         nav('/')
