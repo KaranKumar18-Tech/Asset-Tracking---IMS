@@ -1,6 +1,8 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, Suspense, lazy } from 'react'
 import { StatCard, Card, SectionTitle } from '../components/ui'
 import { CITIES, STATS, UTIL, VENDORS, ACTIVITY } from '../data/mockData'
+
+const MapView = lazy(() => import('../components/MapView'))
 
 const LIVE_TICKS = [
   { color: '#47bf72', text: "Whisky Brand POSM #P-204 checked in — Business Hotel, Bengaluru" },
@@ -31,6 +33,14 @@ export default function Dashboard() {
         <StatCard label="Active / In Use"       value="847"  sub="66% utilization rate"  subColor="text-emb-green" accent="text-emb-green" borderAccent="border-l-4 border-emb-green" />
         <StatCard label="In Transit"            value="214"  sub="Across 9 cities"       subColor="text-emb-textsecondary"   accent="text-blue-400" />
         <StatCard label="Flagged / Missing"     value="23"   sub="↑ 4 new alerts today"  subColor="text-red-400"   accent="text-red-400" borderAccent="border-l-4 border-red-400" />
+      </div>
+
+      {/* MAP */}
+      <div className="hidden md:block bg-white border border-emb-border rounded-xl p-4 shadow-sm">
+        <div className="text-[11px] font-semibold text-emb-textsecondary uppercase tracking-wider mb-3">Asset Distribution — India</div>
+        <Suspense fallback={<div className="h-72 bg-emb-surface rounded-lg animate-pulse" />}>
+          <MapView />
+        </Suspense>
       </div>
 
       {/* CITY + ACTIVITY */}
