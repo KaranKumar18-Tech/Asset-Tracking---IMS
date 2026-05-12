@@ -1,0 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * { box-sizing: border-box; }
+  html, body, #root {
+    height: 100%;
+    background-color: #f7faf8;
+    color: #0f1e16;
+  }
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overscroll-behavior: none;
+  }
+  ::-webkit-scrollbar { width: 4px; height: 4px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: #d4e8db; border-radius: 4px; }
+}
+
+@layer components {
+  .badge {
+    @apply inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold uppercase tracking-wide border;
+  }
+  .badge-active  { @apply bg-emb-green/10 text-emb-green border-emb-green/25; }
+  .badge-transit { @apply bg-blue-500/10 text-blue-400 border-blue-500/25; }
+  .badge-idle    { @apply bg-amber-500/10 text-amber-400 border-amber-500/25; }
+  .badge-missing { @apply bg-red-500/10 text-red-400 border-red-500/25; }
+
+  .card {
+    @apply bg-white border rounded-xl p-4 shadow-sm;
+    border-color: #d4e8db;
+  }
+  .card-title {
+    @apply text-[11px] font-semibold uppercase tracking-wider mb-3;
+    color: #3d6b4f;
+  }
+
+  .nav-item {
+    @apply flex flex-col items-center gap-0.5 flex-1 py-2 text-[10px] font-medium transition-colors;
+  }
+  .nav-item.active { @apply text-emb-green; }
+  .nav-item:not(.active) { @apply text-emb-med; }
+
+  .input-base {
+    @apply w-full bg-white border rounded-lg px-3 py-2 text-sm outline-none transition-colors font-sans;
+    color: #0f1e16;
+    border-color: #d4e8db;
+  }
+  .input-base::placeholder {
+    color: #3d6b4f;
+  }
+  .input-base:focus {
+    border-color: #47bf72;
+  }
+
+  .btn-primary {
+    @apply bg-emb-green text-white font-bold rounded-xl px-4 py-2.5 text-sm
+           active:scale-95 transition-all cursor-pointer border-none;
+  }
+  .btn-outline {
+    @apply bg-transparent text-emb-green font-semibold rounded-xl px-4 py-2.5 text-sm
+           border border-emb-green active:scale-95 transition-all cursor-pointer;
+  }
+
+  .live-dot {
+    @apply w-1.5 h-1.5 rounded-full bg-emb-green;
+    animation: pulse-dot 1.5s ease-in-out infinite;
+  }
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+@keyframes slide-up {
+  from { transform: translateY(12px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.slide-up {
+  animation: slide-up 0.25s ease forwards;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.fade-in { animation: fade-in 0.3s ease forwards; }
