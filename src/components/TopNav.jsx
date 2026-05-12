@@ -6,6 +6,7 @@ const TABS = [
   { id: '/assets',  label: 'Assets'    },
   { id: '/scan',    label: 'RFID Scan' },
   { id: '/alerts',  label: 'Alerts', badge: 4 },
+  { id: '/reports', label: 'Reports'   },
   { id: '/mobile',  label: 'Field App' },
 ]
 

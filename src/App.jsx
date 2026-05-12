@@ -6,6 +6,7 @@ import Assets       from './pages/Assets'
 import AssetDetail  from './pages/AssetDetail'
 import Scan         from './pages/Scan'
 import Alerts       from './pages/Alerts'
+import Reports      from './pages/Reports'
 import MobileView   from './pages/MobileView'
 
 export default function App() {
@@ -24,6 +25,7 @@ export default function App() {
           <Route path="/assets/:id" element={<AssetDetail  />} />
           <Route path="/scan"       element={<Scan         />} />
           <Route path="/alerts"     element={<Alerts       />} />
+          <Route path="/reports"    element={<Reports      />} />
           <Route path="/mobile"     element={<MobileView   />} />
           <Route path="*"           element={<Navigate to="/" replace />} />
         </Routes>

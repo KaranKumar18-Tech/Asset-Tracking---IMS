@@ -1,13 +1,14 @@
 import { useNavigate, useLocation } from 'react-router-dom'
-import { LayoutDashboard, Package, ScanLine, Bell, Smartphone } from 'lucide-react'
+import { LayoutDashboard, Package, ScanLine, Bell, BarChart2, Smartphone } from 'lucide-react'
 import clsx from 'clsx'
 
 const ITEMS = [
-  { id: '/',        label: 'Home',    Icon: LayoutDashboard },
-  { id: '/assets',  label: 'Assets',  Icon: Package         },
-  { id: '/scan',    label: 'Scan',    Icon: ScanLine        },
-  { id: '/alerts',  label: 'Alerts',  Icon: Bell            },
-  { id: '/mobile',  label: 'Field',   Icon: Smartphone      },
+  { id: '/',        label: 'Home',     Icon: LayoutDashboard },
+  { id: '/assets',  label: 'Assets',   Icon: Package         },
+  { id: '/scan',    label: 'Scan',     Icon: ScanLine        },
+  { id: '/alerts',  label: 'Alerts',   Icon: Bell            },
+  { id: '/reports', label: 'Reports',  Icon: BarChart2       },
+  { id: '/mobile',  label: 'Field',    Icon: Smartphone      },
 ]
 
 export default function BottomNav() {
