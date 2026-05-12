@@ -23,7 +23,11 @@ export default function App() {
     )
   }
 
-  if (!user) {
+  // Auth guard: check both React state and localStorage
+  const storedUser = localStorage.getItem('assetpulse_user')
+  const isAuthenticated = user && storedUser
+
+  if (!isAuthenticated) {
     return <Login />
   }
 
