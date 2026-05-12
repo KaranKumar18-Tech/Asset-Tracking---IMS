@@ -99,6 +99,94 @@ export const RFID_DETAIL = {
       { color: '#47bf72', title: 'Checked In — Business Hotel, Hyderabad',        sub: 'Rum Brand Rum Night · 18 Apr 2026'             },
     ]
   },
+  'RFID-DG-0447': {
+    name: 'Premium Whisky Ice Bucket Set', type: 'POSM', status: 'missing',
+    loc: 'Unknown — Last scanned at Vendor B warehouse', vendor: 'Vendor B — Delhi',
+    event: 'Unknown', added: 'Feb 2024', weight: '3 kg',
+    timeline: [
+      { color: '#ef4444', title: '⚠ ALERT — No scan in 12 days',           sub: 'Last activity: Vendor B warehouse, Delhi · 30 Apr 2026'     },
+      { color: '#f59e0b', title: 'Idle — Vendor B Warehouse, Delhi',       sub: 'Pending assignment · 30 Apr 2026'                   },
+      { color: '#47bf72', title: 'Checked In — Vendor B Facility, Delhi',  sub: 'Received from logistics · 25 Apr 2026'             },
+      { color: '#60a5fa', title: 'In Transit — Hub → Vendor B, Delhi',     sub: 'Dispatched from Central Hub · 24 Apr 2026'         },
+    ]
+  },
+  'RFID-DG-0512': {
+    name: 'Vodka Brand Neon Display', type: 'Branding', status: 'missing',
+    loc: 'Unknown — Pending Confirmation', vendor: 'Vendor D — Hyderabad',
+    event: 'Unknown', added: 'Mar 2024', weight: '12 kg',
+    timeline: [
+      { color: '#ef4444', title: '⚠ ALERT — No scan in 5 days',            sub: 'Vendor marked as returned but no scan confirmation · 07 May 2026'     },
+      { color: '#f59e0b', title: 'Returned to Vendor — Status Unclear',     sub: 'Vendor B claimed return on 07 May 2026'            },
+      { color: '#47bf72', title: 'Checked In — Entertainment Venue, Pune',  sub: 'Vodka Brand Launch Event · 02 May 2026'            },
+      { color: '#60a5fa', title: 'In Transit — Hyderabad → Pune',           sub: 'Dispatched by Vendor D · 01 May 2026'              },
+    ]
+  },
+  'RFID-DG-0303': {
+    name: 'Gin Brand Backbar Set', type: 'Backbar', status: 'idle',
+    loc: 'Lifestyle Hotel, Chennai', vendor: 'Vendor C — Bengaluru',
+    event: 'Gin Experience', added: 'Jul 2023', weight: '58 kg',
+    timeline: [
+      { color: '#f59e0b', title: 'Idle — No event assigned',               sub: 'Asset stationary for 8 days · Last scan 3 days ago'  },
+      { color: '#47bf72', title: 'Checked In — Lifestyle Hotel, Chennai',  sub: 'Gin Experience Event · 04 May 2026'                },
+      { color: '#60a5fa', title: 'In Transit — Vendor C → Hotel',           sub: 'Dispatched by Vendor C · 02 May 2026'              },
+      { color: '#f59e0b', title: 'Stored at Vendor C Facility',             sub: 'Pre-event storage · 01 May 2026'                   },
+    ]
+  },
+  'RFID-DG-0156': {
+    name: 'Scotch Brand Display Unit', type: 'Fabrication', status: 'transit',
+    loc: 'In Transit (Pune → Mumbai)', vendor: 'Vendor B — Delhi',
+    event: 'Scotch Brand Jazz Night', added: 'Sep 2023', weight: '35 kg',
+    timeline: [
+      { color: '#60a5fa', title: 'In Transit — Pune → Mumbai',              sub: 'Dispatched from Pune logistics hub · Yesterday 14:30' },
+      { color: '#47bf72', title: 'Checked In — Jazz Venue, Pune',           sub: 'Scotch Brand Jazz Night Event · 10 May 2026'       },
+      { color: '#60a5fa', title: 'In Transit — Central Hub → Pune',         sub: 'Dispatched by Logistics · 08 May 2026'             },
+      { color: '#47bf72', title: 'Stored at Central Distribution Hub',      sub: 'Pre-event staging · 05 May 2026'                   },
+    ]
+  },
+  'RFID-DG-0334': {
+    name: 'Single Malt Brand Launch Kit', type: 'Fabrication', status: 'idle',
+    loc: 'Vendor B — Delhi, Delhi', vendor: 'Vendor B — Delhi',
+    event: 'Single Malt Brand Launch', added: 'Dec 2023', weight: '28 kg',
+    timeline: [
+      { color: '#f59e0b', title: 'Idle — Past return due date',             sub: 'Expected back 08 May · No check-out scan · 06 May 2026' },
+      { color: '#47bf72', title: 'Checked In — Luxury Hotel, Delhi',        sub: 'Single Malt Brand Launch Event · 05 May 2026'      },
+      { color: '#60a5fa', title: 'In Transit — Vendor B → Hotel',           sub: 'Dispatched by Vendor B · 03 May 2026'              },
+      { color: '#f59e0b', title: 'Stored at Vendor B Facility, Delhi',      sub: 'Pre-event preparation · 01 May 2026'               },
+    ]
+  },
+  'RFID-DG-0412': {
+    name: 'Single Malt Brand Display Stand', type: 'Branding', status: 'active',
+    loc: 'Luxury Hotel, Delhi, Delhi', vendor: 'Vendor B — Delhi',
+    event: 'Single Malt Brand Launch', added: 'Dec 2023', weight: '22 kg',
+    timeline: [
+      { color: '#47bf72', title: 'Checked In — Luxury Hotel, Delhi',        sub: 'Scanned by: Field Agent (Vendor B) · Today 10:18'    },
+      { color: '#60a5fa', title: 'In Transit — Vendor B → Hotel',           sub: 'Dispatched by Vendor B · 10 May 2026 · 08:15'      },
+      { color: '#f59e0b', title: 'Staged at Vendor B Warehouse',            sub: 'Pre-event preparation · 08 May 2026'               },
+      { color: '#47bf72', title: 'Checked In — Vendor B Facility, Delhi',   sub: 'Received from manufacturing · 05 May 2026'         },
+    ]
+  },
+  'RFID-DG-0077': {
+    name: 'Whisky Brand Fabrication Kit', type: 'Fabrication', status: 'active',
+    loc: 'Central Warehouse, Bengaluru', vendor: 'Internal',
+    event: 'Returned', added: 'Nov 2023', weight: '40 kg',
+    timeline: [
+      { color: '#47bf72', title: 'Returned to Warehouse',                   sub: 'Received back by Internal team · Today 07:30'       },
+      { color: '#60a5fa', title: 'In Transit — Event Venue → Warehouse',    sub: 'Returned from Business Hotel, Hyderabad · 10 May 2026' },
+      { color: '#47bf72', title: 'Checked In — Business Hotel, Hyderabad',  sub: 'Whisky Brand Experience · 05 May 2026'             },
+      { color: '#60a5fa', title: 'Dispatched from Central Warehouse',       sub: 'Sent to event venue · 03 May 2026'                 },
+    ]
+  },
+  'RFID-DG-0088': {
+    name: 'Reserve Brand Display Unit', type: 'Branding', status: 'transit',
+    loc: 'In Transit (Delhi → Gurgaon)', vendor: 'Vendor B — Delhi',
+    event: 'Reserve Brand Reserve Night', added: 'Jan 2024', weight: '18 kg',
+    timeline: [
+      { color: '#60a5fa', title: 'In Transit — Delhi → Gurgaon',            sub: 'Dispatched from Vendor B facility · Today 08:45'    },
+      { color: '#47bf72', title: 'Checked In — Vendor B Facility, Delhi',   sub: 'Prepped for dispatch · Today 07:00'                },
+      { color: '#f59e0b', title: 'Staged at Vendor B Warehouse',            sub: 'Pre-event setup · 11 May 2026'                     },
+      { color: '#47bf72', title: 'Checked In — Previous Venue, Bangalore',  sub: 'Reserve Brand Tasting · 08 May 2026'               },
+    ]
+  },
 }
 
 export const ALERTS = [
