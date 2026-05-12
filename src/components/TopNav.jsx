@@ -1,4 +1,6 @@
 import { useNavigate, useLocation } from 'react-router-dom'
+import { LogOut } from 'lucide-react'
+import { useAuth } from '../hooks/useAuth'
 import clsx from 'clsx'
 
 const TABS = [
@@ -13,6 +15,12 @@ const TABS = [
 export default function TopNav() {
   const nav = useNavigate()
   const { pathname } = useLocation()
+  const { user, signOut } = useAuth()
+
+  const handleSignOut = () => {
+    signOut()
+    nav('/login', { replace: true })
+  }
 
   return (
     <nav className="bg-emb-dark border-b border-emb-mid flex items-center justify-between px-5 py-2.5 flex-shrink-0">
@@ -48,10 +56,19 @@ export default function TopNav() {
         ))}
       </div>
 
-      {/* Live badge */}
-      <div className="flex items-center gap-1.5 bg-emb-green/10 border border-emb-green/25 text-emb-green text-[10px] font-mono px-2.5 py-1 rounded-full">
-        <div className="live-dot" />
-        LIVE
+      {/* User info + Sign out */}
+      <div className="flex items-center gap-3">
+        <div className="text-right">
+          <div className="text-xs font-semibold text-white">{user?.name}</div>
+          <div className="text-[10px] text-emb-med capitalize">{user?.role}</div>
+        </div>
+        <button
+          onClick={handleSignOut}
+          className="flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-medium text-emb-med hover:bg-white/5 hover:text-white transition-colors border-none cursor-pointer"
+        >
+          <LogOut size={14} />
+          Sign Out
+        </button>
       </div>
     </nav>
   )
