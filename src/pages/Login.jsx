@@ -60,7 +60,7 @@ export default function Login() {
         </div>
 
         {/* Form */}
-        <form onSubmit={handleSignIn} className="space-y-4 mb-6">
+        <form onSubmit={handleSignIn} autoComplete="off" className="space-y-4 mb-6">
           {/* Email */}
           <div>
             <label className="text-xs font-semibold text-emb-textprimary mb-1.5 block">
@@ -73,6 +73,7 @@ export default function Login() {
               placeholder="you@company.com"
               className="input-base"
               disabled={loading}
+              autoComplete="off"
             />
           </div>
 
@@ -89,6 +90,7 @@ export default function Login() {
                 placeholder="••••••••"
                 className="input-base pr-10"
                 disabled={loading}
+                autoComplete="new-password"
               />
               <button
                 type="button"
